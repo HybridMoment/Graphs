@@ -60,11 +60,7 @@ public class GridGraph {
     }
 
     HashSet<GridNode> getAllNodes(){
-        HashSet<GridNode> set = new HashSet<GridNode>();
-        this.vertices.forEach((v) -> {
-            set.add(v);
-        });
-        return set;
+        return new HashSet<GridNode>(this.vertices);
     }
 
 }
