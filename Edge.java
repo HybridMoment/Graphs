@@ -1,11 +1,12 @@
 
 public class Edge {
-    Node adjacentNode;
+    Node source; 
+    Node destination;
     int weight;
     
 
-    Edge(Node adjacent, int weight){
-        this.adjacentNode = adjacent;
+    Edge(Node source ,Node dest, int weight){
+        this.destination = dest;
         this.weight = weight;
     }
     

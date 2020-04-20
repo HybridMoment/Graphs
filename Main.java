@@ -101,20 +101,18 @@ class Main{
     //5e
     static HashMap<Node,Integer> dijsktras(final Node start){
         //Returns dictionary mapping each node in the graph to the minimum value from start to get to this node
-        //TODO:test this
+        //TODO: Implement Priority queue to get min. 
         HashMap<Node, Integer> distance = new HashMap<>();
         
         Comparator<Edge> edgeWeightComparator = new Comparator<Edge>(){
         
             @Override
             public int compare(Edge o1, Edge o2) {
-                if(o1.weight < o2.weight){
-                    return o1.weight;
-                }
-                return o2.weight;
+                //changed for comment
+                return o1.weight - o2.weight;
             }
         };
-
+        //TODO: WIP: use pQueue as min heap for dijsktras 
         PriorityQueue<Edge> pQueue = new PriorityQueue<Edge>(edgeWeightComparator);
         HashSet<Node> visited = new HashSet<>();
         
@@ -132,11 +130,13 @@ class Main{
                 distance.putIfAbsent(neighbor, Integer.MAX_VALUE); 
                 if(!visited.contains(neighbor)){
                     distance.put(neighbor, Math.min( distance.get(neighbor), cur.edges.get(neighbor) + distance.get(cur))); 
-                    pQueue.add(new Edge( neighbor, cur.edges.get(neighbor)));
+                    pQueue.add(new Edge( cur ,neighbor, cur.edges.get(neighbor)));
                 }
 
             }
             //get min node
+            //min = pQueue.poll().destination;
+            
             for (Node node : distance.keySet()) {
                 if(!visited.contains(node)){
                     if(min == null){
@@ -196,6 +196,17 @@ class Main{
     static ArrayList<Node> BFTIterLinkedList(final Graph graph){
         ArrayList<Node> BFT = GraphSearch.BFTIter(graph);
         return BFT;
+    }
+    static GridGraph createRandomGridGraph(int n){
+        //TODO: this
+        GridGraph randGridGraph = new GridGraph();
+
+        return randGridGraph;
+    }
+    static ArrayList<Node> astar(final Node sourceNode, final Node destNode ){
+        //TODO: this
+        ArrayList<Node> astarNodes = new ArrayList<Node>();
+        return astarNodes;
     }
     public static void main(String[] args){
         
